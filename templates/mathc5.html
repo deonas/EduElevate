@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathematics - Class 5</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/subjects.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Mathematics - Class 5</h1>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Home</a></li>
+                    <li><a href="{{ url_for('courses') }}">Courses</a></li> <!-- Link to the new courses page -->
+                    <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="chapters">
+        <div class="button-container">
+            <h2>Part</h2>
+            <ul>
+                <li>
+                    <a href="{{ url_for('part1') }}" class="btn-nav" onclick="storePart('I')">
+                        <button type="button">I</button>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('part2') }}" class="btn-nav" onclick="storePart('II')">
+                        <button type="button">II</button>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 EduElevate. All Rights Reserved.</p>
+        </div>
+    </footer>
+    {% include 'components/chatbot.html' %}
+    <script>
+       document.addEventListener('DOMContentLoaded', function() {
+    // Extract part from URL (e.g., /class-5/Maths/PartI -> I)
+    const pathParts = window.location.pathname.split('/');
+    const partFromUrl = pathParts[pathParts.length - 1].replace('Part', '');
+    if (partFromUrl) {
+        localStorage.setItem('selectedPart', partFromUrl);
+        console.log('Part set from URL:', partFromUrl);
+    }
+});
+
+// Updated storePart function
+function storePart(part) {
+    // Store the selected part in localStorage
+    localStorage.setItem('selectedPart', part);
+    console.log('Stored selected part:', part);
+    
+    // Verify storage immediately
+    const storedPart = localStorage.getItem('selectedPart');
+    console.log('Verified stored part:', storedPart);
+}
+    </script>
+</body>
+</html>
+

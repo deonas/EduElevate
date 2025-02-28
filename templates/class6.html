@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class 6</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <style>
+        @import url('https://fonts.cdnfonts.com/css/bondist');
+        </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <h1>Class 6</h1>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('englishc61') }}" class="btn-nav" onclick="storeButtonText(this)">English 1st Language</a></li>
+                    <li><a href="{{ url_for('englishc62') }}" class="btn-nav" onclick="storeButtonText(this)">English 2nd Language</a></li>
+                    <li><a href="{{ url_for('mathsc6') }}" class="btn-nav" onclick="storeButtonText(this)">Maths</a></li>
+                    <li><a href="{{ url_for('sciencec6') }}" class="btn-nav" onclick="storeButtonText(this)">Science</a></li>
+                    <li><a href="{{ url_for('socialc6') }}" class="btn-nav" onclick="storeButtonText(this)">Social Science</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+      <!-- Welcome Section -->
+      <section id="welcome" class="container">
+        <h2>Welcome to EduElevate!</h2>
+        <p>Navigate to various subjects worksheets by clicking the buttons above.</p>
+        <a href="{{ url_for('about') }}" class="btn">Learn More</a>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+        </div>
+    </footer>
+    {% include 'components/chatbot.html' %}
+    <!--javascript functionality-->
+    <script>
+        // Function to handle button click
+        function storeButtonText(button) {
+            const subject= button.textContent; // Get the text of the clicked button
+            localStorage.setItem("subject", subject); // Store it in localStorage
+            console.log(`Stored subject: ${subject}`); // Optional: Log for debugging
+        }
+    </script>
+</body>
+</html>

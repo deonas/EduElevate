@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class 8</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <style>
+        @import url('https://fonts.cdnfonts.com/css/bondist');
+        </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <h1>Class 8</h1>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('englishc81') }}" class="btn-nav" onclick="storeButtonText(this)">English 1st Language</a></li>
+                    <li><a href="{{ url_for('englishc82') }}" class="btn-nav" onclick="storeButtonText(this)">English 2nd Language</a></li>
+                    <li><a href="{{ url_for('mathc8') }}" class="btn-nav" onclick="storeButtonText(this)">Maths</a></li>
+                    <li><a href="{{ url_for('sciencec8') }}" class="btn-nav" onclick="storeButtonText(this)">Science</a></li>
+                    <li><a href="{{ url_for('hisc8') }}" class="btn-nav" onclick="storeButtonText(this)">History</a></li>
+                    <li><a href="{{ url_for('polc8') }}" class="btn-nav" onclick="storeButtonText(this)">Political science</a></li>
+                    <li><a href="{{ url_for('sociologyc8') }}" class="btn-nav" onclick="storeButtonText(this)">Sociology</a></li>
+                    <li><a href="{{ url_for('geoc8') }}" class="btn-nav" onclick="storeButtonText(this)">Geography</a></li>
+                    <li><a href="{{ url_for('ecoc8') }}" class="btn-nav" onclick="storeButtonText(this)">Economics</a></li>
+                    <li><a href="{{ url_for('buic8') }}" class="btn-nav" onclick="storeButtonText(this)">Business studies</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Welcome Section -->
+    <section id="welcome" class="container">
+        <h2>Hello, Everyone!</h2>
+        <p>Explore various subjects by clicking the buttons above.</p>
+        <a href="{{ url_for('about') }}" class="btn">Learn More</a>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+        </div>
+    </footer>
+    {% include 'components/chatbot.html' %}
+    <script>
+        // Function to handle button click
+        function storeButtonText(button) {
+            const buttonText = button.textContent;
+            localStorage.setItem("subject", buttonText);
+            console.log(`Stored subject: ${buttonText}`);
+        }
+    </script>
+</body>
+</html>
